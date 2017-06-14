@@ -1,0 +1,206 @@
+{
+    "menu":{
+        "about": "About",
+        "works": "Works",
+        "contacts": "Contacts"
+    },
+   "about":{
+      "team":{
+         "title":"The Team",
+         "aboutButton":"Get More",
+         "departments":[
+            {
+               "title":"Code",
+               "peoples":[
+                  {
+                     "name":"Я",
+                     "position":"Главный",
+                     "photo":"me",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                            {
+                                "technology":"JavaScript",
+                                "years":6
+                            },
+                            {
+                                "technology":"ReactJS",
+                                "years":3
+                            },
+                            {
+                                "technology":"NodeJs",
+                                "years":5
+                            },
+                            {
+                                "technology":"Angular",
+                                "years":1
+                            }
+                        ]
+                     },
+                     "about":"Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на название, не имеет никакого отношения к обитателям водоемов. Используется он веб-дизайнерами для вставки на интернет-страницы и демонстрации внешнего вида контента, просмотра шрифтов, абзацев, отступов и т.д. Так как цель применения такого текста исключительно демонстрационная, то и смысловую нагрузку ему нести совсем необязательно. Более того, нечитабельность текста сыграет на руку при оценке качества восприятия макета."
+                  },
+                  {
+                     "name":"Ns",
+                     "position":"Главный",
+                     "photo":"me",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                           {
+                              "technology":"Все",
+                              "years":100500
+                           }
+                        ]
+                     },
+                     "about":"Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на название, не имеет никакого отношения к обитателям водоемов."
+                  }
+               ]
+            },
+            {
+               "title":"Testing",
+               "peoples":[
+                  {
+                     "name":"Я",
+                     "position":"Главный",
+                     "photo":"first",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                           {
+                              "technology":"Все",
+                              "years":100500
+                           }
+                        ]
+                     },
+                     "about":"Я все сказал"
+                  },
+                  {
+                     "name":"Ns",
+                     "position":"Главный",
+                     "photo":"logo",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                           {
+                              "technology":"Все",
+                              "years":100500
+                           }
+                        ]
+                     },
+                     "about":"Я все сказал"
+                  },
+                  {
+                     "name":"Ns",
+                     "position":"Главный",
+                     "photo":"me",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                           {
+                              "technology":"Все",
+                              "years":100500
+                           }
+                        ]
+                     },
+                     "about":"Я все сказал"
+                  }
+               ]
+            },
+            {
+               "title":"Арт и дизайн",
+               "peoples":[
+                  {
+                     "name":"Я",
+                     "position":"Главный",
+                     "photo":"first",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                           {
+                              "technology":"Все",
+                              "years":100500
+                           }
+                        ]
+                     },
+                     "about":"Я все сказал"
+                  },
+                  {
+                     "name":"Ns",
+                     "position":"Главный",
+                     "photo":"logo",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                           {
+                              "technology":"Все",
+                              "years":100500
+                           }
+                        ]
+                     },
+                     "about":"Я все сказал"
+                  },
+                  {
+                     "name":"Ns",
+                     "position":"Главный",
+                     "photo":"me",
+                     "experience":{
+                        "title":"Опыт",
+                        "collection":[
+                           {
+                              "technology":"Все",
+                              "years":100500
+                           }
+                        ]
+                     },
+                     "about":"Я все сказал"
+                  }
+               ]
+            }
+         ]
+      },
+      "manifest":{
+         "title":"Манифест",
+         "body":"Мы такие охуенные, что вам это не по карману."
+      },
+      "capabilities":{
+         "title":"Наши возможности",
+         "offers":[
+            {
+               "title":"Все что угодно",
+               "description":"Главное несите бабосы"
+            }
+         ]
+      },
+      "reviews":{
+         "title":"Довольные люди",
+         "collection":[
+            {
+               "reviewer":"Вася",
+               "company":"Дискаунтер",
+               "task":{
+                  "name":"Провести тестирование приложения",
+                  "link":""
+               },
+               "review":"Да они пиздец охуенные!"
+            }
+         ]
+      },
+      "thisSite":{
+         "title":"Про этот сайт",
+         "info":"Как и с помощью чего он сделан",
+         "technology":[
+            {
+               "name":"React",
+               "info":"Что это за хуйня",
+               "link":"ссылка епта"
+            }
+         ]
+      }
+   },
+   "works":{
+
+   },
+   "contacts":{
+
+   }
+}

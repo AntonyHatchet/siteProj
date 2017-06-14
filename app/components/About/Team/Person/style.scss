@@ -1,0 +1,32 @@
+.personContainer{
+
+    margin: 0 1%;
+    display: flex;
+    width: 10vmax;
+    height: 20vmax;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+
+    .imgContainer{
+        background: none;
+        overflow: hidden;
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+        transform: rotate(45deg);
+
+        img{
+            height: 100%;
+            width: 100%;
+            position: relative;
+            -ms-transform: rotate(-45deg); /* IE 9 */
+            -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+            transform: rotate(-45deg);
+        }
+    }
+
+    .aboutButton{
+        margin-top: 15px; 
+    }
+}

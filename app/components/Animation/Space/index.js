@@ -2,20 +2,26 @@ import React from 'react';
 import React3 from 'react-three-renderer';
 import * as THREE from 'three';
 
-import RotatingCube from './RotatingCube';
-import RotatingCubes from './RotatingCubes';
+import Text from './ThreeText';
+import RotatingGeometry from './RotatingGeometry';
 import PointCloud from './PointCloud';
 import styles from './style.scss';
 
-class RotatingCubesDirectUpdates extends RotatingCubes {
+class Animation extends RotatingGeometry {
   _getMeshStates() {
-    const { bodies } = this;
+    const { bodies, skyes } = this;
 
-    return bodies.map(({ position, quaternion, ref }) => ({
-      position: new THREE.Vector3().copy(position),
-      quaternion: new THREE.Quaternion().copy(quaternion),
-      ref,
-    }));
+    return {
+      bodies: this.bodies.map(({ position, quaternion, ref }) => ({
+        position: new THREE.Vector3().copy(position),
+        quaternion: new THREE.Quaternion().copy(quaternion),
+        ref
+      })),
+      skyes: {
+        quaternion: new THREE.Quaternion().copy(this.skyes.quaternion),
+        ref: this.skyes.ref
+      }
+    }
   }
 
   _bodyRef(index, body) {
@@ -27,8 +33,17 @@ class RotatingCubesDirectUpdates extends RotatingCubes {
     this.bodies[index].body = React3.findTHREEObject(body);
   }
 
+  _skyRef(sky){
+      if (sky === null) {
+      // dismounted
+      return;
+    }
+
+    this.skyes.body = React3.findTHREEObject(sky)
+  }
+
   _updateGraphics() {
-    const { bodies } = this;
+    const { bodies, skyes} = this;
 
     for (let i = 0; i < bodies.length; ++i) {
       const body = bodies[i];
@@ -38,36 +53,30 @@ class RotatingCubesDirectUpdates extends RotatingCubes {
         body.body.quaternion.copy(body.quaternion);
       }
     }
+
+    if (skyes.body) {
+      skyes.body.quaternion.copy(skyes.quaternion);
+    }
   }
 
   _createBody(i) {
     return {
-      ...super._createBody(),
+      ...super._createBody(i),
 
       ref: this._bodyRef.bind(this, i),
     };
   }
 
-  _onDocumentMouseMove = (event) => {
-    const {
-      width,
-      height,
-    } = this.props;
+  _createSky() {
+    return {
+      ...super._createSky(),
 
-    const windowHalfX = width / 2;
-    const windowHalfY = height / 2;
-
-    this.mouseX = event.clientX;
-    this.mouseY = event.clientY;
-
-    this.cameraPosition = new THREE.Vector3(10, this.mouseY*0.001, this.mouseX*0.001);
-
-    this.setState({
-      cameraPosition: this.refs.camera.position,
-    });
-  };
+      ref: this._skyRef.bind(this),
+    };
+  }
 
   render() {
+    console.log("render")
     const {
       width,
       height,
@@ -75,26 +84,29 @@ class RotatingCubesDirectUpdates extends RotatingCubes {
 
     const {
       meshStates,
+      skyState
     } = this.state;
 
     const d = 20;
 
-    const cubeMeshes = meshStates.map(({ position, quaternion, ref }, i) => (<RotatingCube
+    const cubeMeshes = meshStates.map(({ position, quaternion, ref }, i) => (<Text
       key={i}
 
       position={position}
       quaternion={quaternion}
 
+      symbol = {"Gravideots"[i]}
       ref={ref}
 
       meshes={this.meshes}
     />));
 
+    const sky = <PointCloud quaternion={skyState.quaternion} ref={skyState.ref} meshes={this.meshes} />
+
     return (<div
       className={styles.canvasContainer}
       ref="container"
     >
-      {this._getInputBox('Rotating Cubes - Direct Updates')}
       <React3
         ref="react3"
         antialias
@@ -104,7 +116,7 @@ class RotatingCubesDirectUpdates extends RotatingCubes {
 
         onAnimate={this._onAnimate}
 
-        clearColor={0x000000}
+        clearColor={0xffffff}
 
         gammaInput
         gammaOutput
@@ -143,11 +155,11 @@ class RotatingCubesDirectUpdates extends RotatingCubes {
             ref="camera"
           />
           <ambientLight
-            color={0x666666}
+            color={0xffcf48}
           />
           <directionalLight
-            color={0xffffff}
-            intensity={1.75}
+            color={0xffcf48}
+            intensity={2}
 
             castShadow
 
@@ -165,14 +177,12 @@ class RotatingCubesDirectUpdates extends RotatingCubes {
             position={this.lightPosition}
             lookAt={this.lightTarget}
           />
-          {
-            <PointCloud/>
-          }
-          {cubeMeshes}
+          {sky}
         </scene>
       </React3>
     </div>);
   }
 }
 
-export default RotatingCubesDirectUpdates;
+// {cubeMeshes}
+export default Animation;

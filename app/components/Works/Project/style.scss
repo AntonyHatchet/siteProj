@@ -1,0 +1,116 @@
+.projectWrapper{
+    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .presentationBlock{
+        height: 50%;
+        width: 48%;
+        margin: 1%;
+
+        .subheader{
+            color: #fff;
+            text-align: left;
+            padding-left: 25px;
+        }
+
+        .plainText{
+            @extend .subheader;
+            font-size: 1.8vmin;
+            padding: 0 1em;
+        }
+
+        .gifBlock{
+            height: 100%;
+            width: 100%;
+        }
+
+        .who{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+
+            .imgContainer{
+                width: 12vmin;
+                height: 12vmin;
+                margin: 2%;
+                background: none;
+                overflow: hidden;
+                -ms-transform: rotate(45deg); /* IE 9 */
+                -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+                transform: rotate(45deg);
+
+                img{
+                    height: 100%;
+                    width: 100%;
+                    position: relative;
+                    -ms-transform: rotate(-45deg); /* IE 9 */
+                    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+                    transform: rotate(-45deg);
+                }
+            }
+
+            .textContainer{
+                width: 80%;
+
+                .sign{
+                    @extend .plainText;
+
+                    text-align: right;
+                    font-style: italic;
+                }
+            }
+        }
+
+        .list{
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            
+            .listItem{
+                color: #fff;
+                -webkit-flex: 1; /* Safari 6.1+ */
+                 flex: 1;
+            }
+        }
+
+
+
+            .iconContainer{
+                -webkit-box-flex: auto;
+                -ms-flex: auto;
+                flex: auto; 
+                width: 200px; 
+                margin: .5vw; 
+                align-self: center;
+
+                .techIcon{
+                    width: 100%; 
+                    height: auto; 
+                }
+            }
+        
+    }
+    .infoBlock{
+        position: relative;
+        height: 40%;
+        width: 98%;
+        margin: 1%;
+        
+        .buttonWrapper{
+            position: absolute;
+            right: 0%;
+            bottom: 10%;
+        }
+
+    }
+}
+
+.frame{
+    border-top: 35px solid;
+    border-bottom: 35px solid;
+}

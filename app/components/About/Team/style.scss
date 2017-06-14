@@ -1,0 +1,14 @@
+.teamContainer{
+
+    height: 100%;
+
+}
+.gridList{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* align items in Cross Axis */
+    align-content: stretch; /* Extra space in Cross Axis */
+    justify-content: space-around;
+    height: 100%;
+    padding: 6%;
+}

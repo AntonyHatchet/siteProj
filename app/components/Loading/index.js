@@ -1,21 +1,18 @@
 import React from 'react';
 import s from './styles.scss';
+import CircularProgress from 'material-ui/CircularProgress';
+import LinearProgress from 'material-ui/LinearProgress';
+
+const timelineItem = {
+  margin: " 0 auto",
+  position: "absolute",
+  top: "calc(50% - 40px)",
+  left: "calc(50% - 40px)",
+}
 
 const Loading = () => (
-  <div className={s.timelineItem}>
-    <ul className={s.animatedBackground}>
-      <li className={s.headerTop} />
-      <li className={s.headerRight} />
-      <li className={s.headerBottom} />
-      <li className={s.subheaderRight} />
-      <li className={s.subheaderBottom} />
-      <li className={s.contentTop} />
-      <li className={s.contentFirstEnd} />
-      <li className={s.contentSecondLine} />
-      <li className={s.contentSecondEnd} />
-      <li className={s.contentThirdLine} />
-      <li className={s.contentThirdEnd} />
-    </ul>
+  <div className={s.timelineWraper}>
+    <CircularProgress size={80} thickness={5} style={timelineItem}/>
   </div>
 );
 

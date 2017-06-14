@@ -1,0 +1,223 @@
+@import 'theme/_mixins';
+
+.capabilities{
+
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: all 1s linear 0ms;
+
+    
+    .container{
+        position: relative;
+        height: 325px;
+        width: 325px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        transition: all 1s linear 0ms;
+
+        .part{
+            background: #000;
+            height: 325px;
+            width: 325px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            -webkit-transition: all 1s linear 0ms;
+            transition: all 1s linear 0ms;
+
+            -ms-transform: rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+            transform: translateX(0px) rotate(45deg);
+
+            .maskBlock{
+                height: 325px;
+                width: 325px;
+                background: #000;
+                position: absolute;
+                z-index: 2;
+
+                transition: all 1s linear 0ms;
+            }
+
+            .content{
+                height: 325px;
+                width: 325px;
+                background: #000;
+                position: absolute;
+                
+                transition: all 1s linear 1s;
+                transform: translate3d(0,0,0);
+            }
+
+            .contentUp{
+                @extend .content;
+            }
+            .contentDown{
+                @extend .content;
+            }
+
+            .contentContainer{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform:rotate(-45deg);
+                transition: all 1s linear 0ms;
+            }
+        }
+
+        .centralPart{
+            @extend .part;
+
+            z-index: -100;
+            width: 0px;
+            height: 460px;
+            -ms-transform: rotate(0deg); /* IE 9 */
+            -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+            transform: rotate(0deg);
+        }
+
+        .leftPart{
+            @extend .part;
+
+            transform: translateX(-200px) rotate(45deg);
+
+            .contentUp{
+                @extend .content;
+                transform: translate3d(-325px, 0, 0);
+            }
+            .contentDown{
+                @extend .content;
+                transform: translate3d(0, 325px, 0);
+            }
+        }
+
+        
+        .rightPart{
+            @extend .part;
+
+            border-width: 2px 2px 0 0;
+            transform: translateX(200px) rotate(45deg);
+
+            .contentUp{
+                @extend .content;
+                transform: translate3d(0, -325px, 0);
+            }
+            .contentDown{
+                @extend .content;
+                transform: translate3d(325px, 0, 0);
+            }
+        }
+
+        .centralPartAnimate{
+             @extend .centralPart;
+
+             width: 400px;
+             transition: all 1s linear 0ms;
+        }
+
+        .svgContainer{
+            height: 120px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 1s linear 0ms;
+
+            @include svgGlitch("svgContainer", 30, white, none, #D84315, #D84315, 400, 400, 0, 0);
+        }
+
+        .svgContainerHide{
+            @extend .svgContainer;
+
+            transform: scale(0);
+        }
+
+        .centralIcon{
+            .svgContainer{
+                animation: iconAnimation 2s;
+            }
+        }
+
+        .contactFormContainer{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+
+            position: absolute;
+            height: 325px;
+            width: 135%;
+            top: -400px;
+
+            text-align: center;
+            transition: all 1s linear 0ms;
+
+            label{
+                color: #fff;
+                flex-basis: 50%;
+                font-size: 2em;
+                margin: 20px 0;
+                text-transform: uppercase;
+            }
+            input{
+                width: 50%;
+                height: 0;
+                border: none;
+                font-size: 1.2em;
+                padding: 0;
+                transition: all 1s linear 0ms;
+            }
+
+            .sendButtonContainer{
+                .svgContainer{
+                    svg{
+                        height: 0px!important;
+                        transition: all 250ms linear 1s!important;
+                    }
+                }
+            }
+        }
+        .contactFormContainerAnimate{
+            @extend .contactFormContainer;
+
+            transform: translateY(400px);
+
+            input{
+                height: 50px;
+                padding: 15px;
+                border: 1px solid;
+                transition: all 250ms linear 1s;
+            }
+
+            .sendButtonContainer{
+                width: 100%!important;
+                height: auto!important;
+                .svgContainer{
+                    svg{
+                        height: 125px!important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes iconAnimation{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}

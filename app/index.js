@@ -3,16 +3,22 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from 'containers/App';
 import store from 'store';
+
+injectTapEventPlugin();
 
 const renderApp = Component => {
   ReactDOM.render(
     <Provider store={store}>
       <Router>
         <AppContainer>
-          <Component />
+          <MuiThemeProvider>
+            <Component />
+          </MuiThemeProvider>
         </AppContainer>
       </Router>
     </Provider>,

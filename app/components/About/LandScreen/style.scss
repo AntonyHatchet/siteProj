@@ -1,0 +1,26 @@
+@import 'theme/_mixins';
+
+.landScreen{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .companyName{
+
+        text-align: center;
+    }
+
+
+    .glitch{
+        color:black;
+        font-size:14vmax;
+        position:relative;
+        margin:0 auto;
+        
+        @include textGlitch("companyName", 12, black, none, #D84315, #2E7D32, 999999, 16, rect(0,900px,0,0));
+    }
+
+}
+

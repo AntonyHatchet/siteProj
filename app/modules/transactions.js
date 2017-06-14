@@ -3,8 +3,8 @@ import { defaultTransactions, inflowCategories } from './defaults';
 /**
  * Action Constants
  */
-const ADD_TRANSACTION = 'budget/transaction/ADD';
-const DELETE_TRANSACTION = 'budget/transaction/DELETE';
+const ADD_TRANSACTION = 'works/transaction/ADD';
+const DELETE_TRANSACTION = 'works/transaction/DELETE';
 
 /**
  * Helpers
@@ -30,11 +30,14 @@ function normalizeTransaction(state, { categoryId, description, value }) {
  * Actions
  */
 export const actions = {
-  addTransaction: transaction => (dispatch, getState) =>
-    dispatch({
-      type: ADD_TRANSACTION,
-      transaction: normalizeTransaction(getState().transactions, transaction),
-    }),
+  addTransaction: function(transaction){
+    return function(dispatch, getState){
+      dispatch({
+        type: ADD_TRANSACTION,
+        transaction: normalizeTransaction(getState().transactions, transaction),
+      })
+    }
+  },
 
   deleteTransaction: id => ({
     type: DELETE_TRANSACTION,
@@ -50,7 +53,7 @@ export default function transactionsReducer(state = defaultTransactions, action)
 
   switch (action.type) {
     case ADD_TRANSACTION:
-      return [...state, ...action.transaction];
+      return [...state, action.transaction];
 
     case DELETE_TRANSACTION:
       newState = state.filter(todo => todo.id !== action.id);

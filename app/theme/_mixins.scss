@@ -1,0 +1,158 @@
+@mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height, $clipRect) {
+  color: $textColor;
+  position: relative;
+
+  $steps: $intensity;
+
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i * 1 / $steps)} {
+            clip: rect(random($height + $i) + vmax, $width + px, random($height+ $i) + vmax, 0);
+          }
+        }
+      }
+    }
+  }
+
+  &:before,
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $background;
+    clip: $clipRect;
+  }
+  &:after {
+    left: 6px;
+    text-shadow: (-3px) 0 $highlightColor1;
+    animation: #{$name}-anim-1 3s infinite linear alternate-reverse;
+  }
+
+  &:before {
+    left: -6px;
+    text-shadow: 2px 0 $highlightColor2;
+    animation: #{$name}-anim-2 5s infinite linear alternate-reverse;
+  }
+}
+
+@mixin imgGlitch($name, $intensity, $width, $height, $top, $left) {
+  $steps: $intensity;
+
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i * 1 / $steps)} {
+            clip: rect(random($height) + px, $width + px, random($height) + px, 0);
+          }
+        }
+      }
+    }
+  }
+
+  > img {
+    position: absolute;
+    top: $top + px;
+    left: $left + px;
+  }
+
+  > img:nth-child(2),
+  > img:nth-child(3) {
+    clip: rect(0, 0, 0, 0);
+  }
+
+  > img:nth-child(2) {
+    left: $left + 2 + px;
+    animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+  }
+
+  > img:nth-child(3) {
+    left: $left - 2 + px;
+    animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+  }
+}
+
+@mixin svgGlitch($name, $intensity, $fillColor, $background, $fillHighlight1, $fillHighlight2, $width, $height, $top, $left) {
+  $steps: $intensity;
+
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i * 1 / $steps)} {
+            clip: rect(random($height) - 20 + px, $width + px, random($height) + 20 + px, 0);
+          }
+        }
+      }
+    }
+  }
+
+  svg {
+    position: absolute;
+    fill: $fillColor;
+    background: $background;
+    width: $width + px;
+    height: $height + px;
+  }
+
+  svg:nth-child(2),
+  svg:nth-child(3),
+  svg:nth-child(4) {
+    clip: rect(0, 0, 0, 0);
+  }
+
+  svg:nth-child(2) {
+    fill: $fillHighlight1;
+    margin-top: -2px; 
+    animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+  }
+
+  svg:nth-child(3) {
+    fill: $fillHighlight2;
+    margin-left: 3px; 
+    animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+  }
+  svg:nth-child(4) {
+    fill: $fillHighlight2;
+    margin-left: -4px; 
+    animation: #{$name}-anim-2 4s infinite linear alternate-reverse;
+  }
+}
+
+@mixin inputGlitch($name, $intensity, $height) {
+
+  $steps: $intensity;
+
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i * 1 / $steps)} {
+            height: random($height) + px;
+          }
+        }
+      }
+    }
+  }
+
+  > input:nth-of-type(1){
+    animation: #{$name}-anim-2 4s infinite linear alternate-reverse;
+  }
+
+  > input:nth-of-type(2){
+    animation: #{$name}-anim-2 2s infinite linear alternate-reverse;
+  }
+
+}

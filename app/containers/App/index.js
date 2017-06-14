@@ -1,23 +1,24 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Header from 'components/Header';
-import Space from 'routes/Space';
-import Budget from 'routes/Budget';
-import Reports from 'routes/Reports';
+import About from 'routes/About';
+import { injectAsyncReducers } from 'store';
+import translationsReducer from 'modules/translate';
+import imagesReducer from 'modules/images';
+import videoReducer from 'modules/video';
+
 import './style.scss';
 
-const App = () => (
-  <main>
-    <Header />
+// inject reducers that might not have been originally there
+injectAsyncReducers({
+  translation: translationsReducer,
+  images: imagesReducer,
+  video: videoReducer
+});
 
-    <Switch>
-      <Route path="/space" component={Space} />
-      <Route path="/budget" component={Budget} />
-      <Route path="/reports" component={Reports} />
-      <Redirect to="/root" />
-    </Switch>
-  </main>
+const App = () => (
+    <main>
+      <About/>
+    </main>
 );
 
 export default App;

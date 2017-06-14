@@ -1,0 +1,50 @@
+.aboutPersonContainer{
+
+    height: 100%;
+
+    img{
+        margin-right: 3%;
+    }
+
+    .wrapper{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 1%;
+
+        .imgContainer{
+            width: 20%;
+            background: none;
+            overflow: hidden;
+            -ms-transform: rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+            transform: rotate(45deg);
+            margin: auto;
+
+            img{
+                height: 100%;
+                width: 100%;
+                position: relative;
+                -ms-transform: rotate(-45deg); /* IE 9 */
+                -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    .subheader{
+        text-align: center;
+        color: #000;
+        width: 100%;
+    }
+
+    .plainText{
+      font-size: 1.2em;
+      width: 100%;
+    }
+
+    .legendSpan{
+        margin: 0 2%;
+    }
+
+}

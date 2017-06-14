@@ -1,0 +1,245 @@
+@import 'theme/_mixins';
+
+.capabilities{
+
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: all 1s linear 0ms;
+
+    
+    .container{
+        
+        position: fixed;
+        height: 100px;
+        top: 0;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+
+        transform: translateY(0px);
+        transition: all 1s linear 0ms;
+
+        .part{
+            background: #000;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 1;
+
+            -webkit-transition: all 1s linear 0ms;
+            transition: all 1s linear 0ms;
+
+            -ms-transform: rotate(0deg); /* IE 9 */
+            -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+            transform: translateX(0px) rotate(0deg);
+
+            .maskBlock{
+                display: none;
+            }
+
+            .content{
+                height: 100px;
+                width: 100px;
+                background: #000;
+                position: absolute;
+                
+                transition: all 1s linear 0ms;
+                transform: translate3d(0,0,0);
+            }
+
+            .contentUp{
+                @extend .content;
+            }
+            .contentDown{
+                @extend .content;
+            }
+
+            .contentContainer{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform:rotate(0);
+                transition: all 1s linear 0ms;
+            }
+        }
+
+        .centralPart{
+            @extend .part;
+
+            width: 0px;
+            height: 100px;
+            -ms-transform: rotate(0deg); /* IE 9 */
+            -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+            transform: rotate(0deg);
+        }
+
+        .leftPart{
+            @extend .part;
+
+            transform: translateX(-200px) rotate(0);
+
+            .contentUp{
+                @extend .content;
+                transform: translate3d(-80px, 0, 0);
+            }
+            .contentDown{
+                @extend .content;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        
+        .rightPart{
+            @extend .part;
+
+            border-width: 2px 2px 0 0;
+            transform: translateX(200px) rotate(0);
+
+            .contentUp{
+                @extend .content;
+                transform: translate3d(0, 0, 0);
+            }
+            .contentDown{
+                @extend .content;
+                transform: translate3d(80px, 0, 0);
+            }
+        }
+
+        .centralPartAnimate{
+             @extend .centralPart;
+
+             width: 300px;
+             transition: all 1s linear 0ms;
+        }
+
+
+        .centralIcon{
+            transform: scale(1);
+        }
+
+        .centralIconAnimate{
+            transform: scale(0);
+        }
+
+        .centralIconBlock{
+            
+            height: 100px;
+            width: 300px;
+            z-index: 2;
+
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            transform: scale(0);
+            transition: all 1s linear 0ms;
+        }
+
+        .centralIconBlockAnimate{
+            @extend .centralIconBlock;
+
+            transform: scale(1);
+        }
+
+        .svgContainer{
+            height: 100px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 1s linear 0ms;
+
+            @include svgGlitch("svgContainer", 30, white, none, #D84315, #D84315, 400, 400, 0, 0);
+        }
+
+        .svgContainerHide{
+            @extend .svgContainer;
+
+            transform: scale(0);
+        }
+
+        .contactFormContainer{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+
+            z-index: -1;
+
+            background-color: #000;
+
+
+            position: absolute;
+            height: 0;
+            width: 500px;
+            top: 100px;
+
+            text-align: center;
+            transition: all 1s linear 0ms;
+
+            label{
+                color: #fff;
+                flex-basis: 150px;
+                font-size: 0;
+                text-transform: uppercase;
+            }
+            input{
+                width: 150px;
+                height: 0;
+                border: none;
+                font-size: 1em;
+                padding: 0;
+                transition: all 1s linear 0ms;
+            }
+
+            .sendButtonContainer{
+                .svgContainer{
+                    height: auto;
+
+                    svg{
+                        height: 0px!important;
+                    }
+                }
+            }
+        }
+        .contactFormContainerAnimate{
+            @extend .contactFormContainer;
+
+            height: 140px;
+
+            input{
+                height: 50px;
+                padding: 5px;
+                background-color: #fff;
+                color: #000;
+                border: 1px solid ;
+                transition: all 250ms linear 1s;
+            }
+
+            label{
+                margin-bottom: 8px;
+                font-size: 2em;
+            }
+            
+
+            .sendButtonContainer{
+                .svgContainer{
+                    svg{
+                        height: 50px!important;
+                    }
+                }
+            }
+        }
+    }
+}

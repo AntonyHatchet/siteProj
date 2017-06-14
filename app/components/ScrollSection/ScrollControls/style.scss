@@ -1,0 +1,25 @@
+.scrollDots{
+    height: 100vh;
+    position: fixed;
+    right: 2vw;
+    z-index: 1999;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg{
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .goUpIcon{
+        position: fixed;
+        right: 2vw;
+        bottom: 5vh;
+    }
+
+    .hidden{
+        display: none!important;
+    }
+}

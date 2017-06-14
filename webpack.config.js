@@ -157,7 +157,7 @@ module.exports = function(env) {
   if (serviceWorkerBuild) {
     plugins.push(
       new SWPrecacheWebpackPlugin({
-        cacheId: 'budgeting-app',
+        cacheId: 'gravideots-app',
         filename: 'sw.js',
         maximumFileSizeToCacheInBytes: 800000,
         mergeStaticsConfig: true,
@@ -199,13 +199,13 @@ module.exports = function(env) {
     output: {
       path: buildDirectory,
       publicPath: '/',
-      filename: '[name]-[hash:8].js',
-      chunkFilename: '[name]-[chunkhash:8].js',
+      filename: '[name]-[hash:3].js',
+      chunkFilename: '[name]-[chunkhash:3].js',
     },
     module: {
       rules: [
         {
-          test: /\.(html|svg|jpe?g|png|ttf|woff2?)$/,
+          test: /\.(html|svg|jpe?g|png|gif|ttf|mp4|woff2?)$/,
           exclude: /node_modules/,
           use: {
             loader: 'file-loader',
@@ -215,7 +215,7 @@ module.exports = function(env) {
           },
         },
         {
-          test: /\.scss$/,
+          test: /\.(css|scss)$/,
           exclude: /node_modules/,
           use: cssLoader,
         },

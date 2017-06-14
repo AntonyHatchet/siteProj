@@ -1,0 +1,139 @@
+$elements: 11;
+
+.offerContainerHide{
+    display: none;
+}
+
+.offerContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    .backgroundBlock{
+        position: absolute;
+        width: 100%;
+        height: 10vh;
+        transition: all 1s linear 0ms;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+
+        @for $i from 0 to $elements {
+            &:nth-child(#{$i}) {
+                top: $i * 10 - 10vh;
+            }
+        }
+        
+        &:nth-child(2n) {
+            left: 200vw;
+        }
+        &:nth-child(2n+1) {
+            left: -200vw;
+        }
+
+        p{
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 3em;
+        }
+    }
+
+    .contentContainerHide{
+        display: none;
+    }
+    .contentContainer{
+        display: block;
+        position: relative;
+        
+         .contentBlock{
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            padding: 1.5vmax;
+
+            &:nth-child(1){
+                width: auto;
+                top: 15vh;
+                left: 20vw;   
+            }
+            &:nth-child(2){
+                width: 56.5vw;
+                height: auto;
+                top: 30vh;
+                right: 10vw;   
+            }
+            &:nth-child(3){
+                width: 80vw;
+                height: auto;
+                top: 65vh;
+                margin: 0 auto;
+                left: 0;
+                right: 0;  
+
+                
+                justify-content: space-around;
+                align-content: flex-start;
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .caseBlock{
+                width: 395px;
+                height: 200px;
+                background-color: #fff;
+
+                video{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }   
+
+        .text{
+            color: #fff;
+        }
+    }
+
+    .caseContainerHide{
+        display: none;
+    }
+    .caseContainer{
+        position: absolute;
+        top: 0;
+        background-color: #116c1f;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+
+        .caseBlock{
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+        }
+    }
+
+    .hideContent{
+        .backgroundBlock{
+            left: 0;
+        }
+    }
+
+    .drawerCaseBlock{
+        width: 100%;
+        height: 10vmax;
+
+        video{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

@@ -2,15 +2,15 @@
 
 main,
 main > section {
-  display: flex;
-  flex-direction: column;
+  width: inherit;
+  height: auto;
 }
 
 main {
   height: 100%;
 
   section {
-    height: 400px;
-    flex: 1;
+    height: 100vh;
+    flex: auto;
   }
 }
