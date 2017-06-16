@@ -12,8 +12,8 @@
     
     .container{
         position: relative;
-        height: 325px;
-        width: 325px;
+        height: 14vw;
+        width: 14vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -22,8 +22,8 @@
 
         .part{
             background: #000;
-            height: 325px;
-            width: 325px;
+            height: 14vw;
+            width: 14vw;
             position: absolute;
             display: flex;
             justify-content: center;
@@ -37,8 +37,8 @@
             transform: translateX(0px) rotate(45deg);
 
             .maskBlock{
-                height: 325px;
-                width: 325px;
+                height: 14vw;
+                width: 14vw;
                 background: #000;
                 position: absolute;
                 z-index: 2;
@@ -47,8 +47,8 @@
             }
 
             .content{
-                height: 325px;
-                width: 325px;
+                height: 14vw;
+                width: 14vw;
                 background: #000;
                 position: absolute;
                 
@@ -79,7 +79,7 @@
 
             z-index: -100;
             width: 0px;
-            height: 460px;
+            height: 19.7vw;
             -ms-transform: rotate(0deg); /* IE 9 */
             -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
             transform: rotate(0deg);
@@ -88,15 +88,15 @@
         .leftPart{
             @extend .part;
 
-            transform: translateX(-200px) rotate(45deg);
+            transform: translateX(-9.2vw) rotate(45deg);
 
             .contentUp{
                 @extend .content;
-                transform: translate3d(-325px, 0, 0);
+                transform: translate3d(-14vw, 0, 0);
             }
             .contentDown{
                 @extend .content;
-                transform: translate3d(0, 325px, 0);
+                transform: translate3d(0, 14vw, 0);
             }
         }
 
@@ -105,22 +105,22 @@
             @extend .part;
 
             border-width: 2px 2px 0 0;
-            transform: translateX(200px) rotate(45deg);
+            transform: translateX(9.2vw) rotate(45deg);
 
             .contentUp{
                 @extend .content;
-                transform: translate3d(0, -325px, 0);
+                transform: translate3d(0, -14vw, 0);
             }
             .contentDown{
                 @extend .content;
-                transform: translate3d(325px, 0, 0);
+                transform: translate3d(14vw, 0, 0);
             }
         }
 
         .centralPartAnimate{
              @extend .centralPart;
 
-             width: 400px;
+             width: 18.4vw;
              transition: all 1s linear 0ms;
         }
 
@@ -155,7 +155,7 @@
             justify-content: center;
 
             position: absolute;
-            height: 325px;
+            height: 14vw;
             width: 135%;
             top: -400px;
 

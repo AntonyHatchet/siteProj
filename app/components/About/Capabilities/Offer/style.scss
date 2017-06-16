@@ -1,3 +1,5 @@
+@import 'theme/_mixins';
+
 $elements: 11;
 
 .offerContainerHide{
@@ -48,55 +50,146 @@ $elements: 11;
         display: block;
         position: relative;
         
+        z-index: 1;
+        
          .contentBlock{
             position: absolute;
             width: 200px;
-            height: 100px;
+            height: 5vw;
             background-color: black;
             display: flex;
             align-items: center;
             padding: 1.5vmax;
 
             &:nth-child(1){
-                width: auto;
-                top: 15vh;
-                left: 20vw;   
+                width: 28.6vw;
+                top: 6.55vw;
+                left: 0;   
+                justify-content: flex-end;
+                text-align: right;
             }
             &:nth-child(2){
-                width: 56.5vw;
-                height: auto;
-                top: 30vh;
-                right: 10vw;   
+                width: 49vw;
+                height: 11.6vw;
+                top: 13.1vw;
+                right: 0; 
             }
             &:nth-child(3){
-                width: 80vw;
-                height: auto;
-                top: 65vh;
-                margin: 0 auto;
-                left: 0;
-                right: 0;  
+                width: 28.6vw;
+                height: 24.7vw;
+                top: 19.7vw;
+                left: 10.2vw;
+                padding: 0;
 
-                
+                background: none;
+
                 justify-content: space-around;
                 align-content: flex-start;
                 align-items: flex-start;
-                flex-wrap: wrap;
             }
 
             .caseBlock{
-                width: 395px;
-                height: 200px;
+                width: 23.6vw;
+                height: 19.6vw;
+                display: flex;
                 background-color: #fff;
+                justify-content: center;
+                border: 2px solid #fff;
+                overflow: hidden;
 
                 video{
+                    height: 100%;
+                }
+            }
+
+            .controls{
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                
+                >:nth-child(n){
+                    transition: all 600ms linear 0ms!important;
+                }
+
+                >:nth-child(1){
+                    right: -6.1vw;
+                    top: calc(50% - 62px);
+                }
+                >:nth-child(2){
+                    transform: rotate(180deg);
+                    left: -6.1vw;
+                    top: calc(50% - 62px);
+                }
+            }
+
+            .animateControls{
+                @extend .controls;
+                
+                >:nth-child(1){
+                    right: -11.9vw;
+                }
+                >:nth-child(2){
+                    left: -11.9vw;
+                }
+            }
+
+
+
+            .transformationBlock{
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                z-index: 2;
+                transform-style: preserve-3d;
+                transition: all 1100ms ease-in-out 0ms;
+                
+                .side {
+                    display: flex;
+                    position: absolute;
                     width: 100%;
                     height: 100%;
+                    background-color: #000;
+
+
+                    justify-content: space-around;
+                    align-content: center;
+                    align-items: center;
+
+                    -webkit-backface-visibility: visible; /* Chrome, Safari, Opera */
+                    backface-visibility: visible;
+                }
+
+                .backSide{
+                    @extend .side;
+
+                    transform: translateZ(-12.76vw) rotateZ(180deg) rotateX(180deg);
+                }
+                .frontSide{
+                    @extend .side;
+
+                    transform: rotateX(180deg) rotateZ(180deg) rotateY(180deg) translateZ(12.76vw);
+                }
+                .leftSide{
+                    @extend .side;
+
+                    transform: translateX(-50%) rotateY(90deg) rotateX(180deg) rotateZ(180deg);
+                }
+                .rightSide{
+                    @extend .side;
+                    
+                    transform: translateX(50%) rotateY(90deg);
                 }
             }
         }   
 
         .text{
-            color: #fff;
+            color:black;
+            font-size: 3vw;
+            position:relative;
+            text-transform: uppercase;
+
+            @include textGlitch("blockName", 90, #fff, none, #D84315, #2E7D32, 999999, 16, rect(0,900px,0,0));
         }
     }
 
@@ -115,9 +208,11 @@ $elements: 11;
         align-items: center;
 
         .caseBlock{
-            width: 200px;
-            height: 200px;
+            width: 23vw;
+            height: 23vw;
             background-color: #fff;
+            display: flex;
+            justify-content: center;
         }
     }
 

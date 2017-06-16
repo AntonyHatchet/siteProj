@@ -205,7 +205,7 @@ module.exports = function(env) {
     module: {
       rules: [
         {
-          test: /\.(html|svg|jpe?g|png|gif|ttf|mp4|woff2?)$/,
+          test: /\.(html|svg|jpe?g|png|gif|ttf|ogg|mp4|woff2?)$/,
           exclude: /node_modules/,
           use: {
             loader: 'file-loader',

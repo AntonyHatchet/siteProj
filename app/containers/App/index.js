@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import About from 'routes/About';
 import { injectAsyncReducers } from 'store';
@@ -6,7 +6,7 @@ import translationsReducer from 'modules/translate';
 import imagesReducer from 'modules/images';
 import videoReducer from 'modules/video';
 
-import './style.scss';
+import styles from './style.scss';
 
 // inject reducers that might not have been originally there
 injectAsyncReducers({
@@ -15,10 +15,15 @@ injectAsyncReducers({
   video: videoReducer
 });
 
-const App = () => (
+export default class App extends Component{
+
+  render(){
+
+    return(
     <main>
       <About/>
     </main>
-);
+    )
+  }
+}
 
-export default App;

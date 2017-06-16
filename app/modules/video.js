@@ -1,5 +1,5 @@
-import tretiakov from 'video/tretiakov.mp4';
-import malutin from 'video/malutin.mp4';
+import tretiakov from 'video/tretiakov.ogg';
+import malutin from 'video/malutin.ogg';
 
 const video = {
   tretiakov,

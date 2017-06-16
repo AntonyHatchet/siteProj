@@ -26,30 +26,30 @@ import stylesActive from './styleActive.scss';
 const inlineStylesBase = {
 
     largeIcon: {
-        width: 200,
-        height: 200,
+        width: "10vw",
+        height: "10vw",
         color: "#fff"
     },
     mediumIcon: {
-        width: 150,
-        height: 150,
+        width: "7.5vw",
+        height: "7.5vw",
         color: "#fff"
     },
     medium: {
-        width: 300,
-        height: 300,
+        width: "15vw",
+        height: "15vw",
         position: "absolute"
     },
     midleIconAnimateBase: {
-        width: 400,
-        height: 400,
+        width: "20vw",
+        height: "20vw",
         position: "absolute",
         transform: "translateY(0px)",
         transition:" all 1s linear 0ms"
     },
     midleIconAnimate: {
-        width: 400,
-        height: 400,
+        width: "20vw",
+        height: "20vw",
         position: "absolute",
         transform: "translateY(350px)",
         transition:" all 1s linear 0ms"
@@ -59,41 +59,41 @@ const inlineStylesBase = {
 const inlineStylesActivated = {
 
     largeIcon: {
-        width: 100,
-        height: 100,
+        width: "5vw",
+        height: "5vw",
         color: "#fff",
         transition:" all 250ms linear 0ms"
     },
     large: {
-        width: 200,
-        height: 100,
+        width: "10vw",
+        height: "5vw",
         transition:" all 1s linear 0ms"
     },
     mediumIcon: {
-        width: 50,
-        height: 50,
+        width: "2.5vw",
+        height: "2.5vw",
         color: "#fff",
         transition:" all 1s linear 0ms"
     },
     medium: {
-        width: 100,
-        height: 100,
+        width: "5vw",
+        height: "5vw",
         transition:" all 1s linear 0ms"
     },
     small: {
-        width: 150,
-        height: 50,
+        width: "4vw",
+        height: "2.5vw",
         transition:" all 1s linear 0ms"
     },
     midleIconAnimateBase: {
-        width: 200,
-        height: 200,
+        width: "10vw",
+        height: "10vw",
         position: "absolute",
         transition:" all 1s linear 0ms"
     },
     midleIconAnimate: {
-        width: 100,
-        height: 100,
+        width: "5vw",
+        height: "5vw",
         position: "absolute",
         transition:" all 250ms linear 0ms"
     }
@@ -169,7 +169,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("Games")} 
+                            handleTouch={() => this.changeOffer("G∆MΞS")} 
                         >
                             <Games />
                         </SidePart>
@@ -180,7 +180,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("Mobile")} 
+                            handleTouch={() => this.changeOffer("MOBỊLΞ")} 
                         >
                             <Mobile />
                         </SidePart>
@@ -196,7 +196,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("WebApp")} 
+                            handleTouch={() => this.changeOffer("WΞB ∆PP")} 
                         >
                             <WebApp />
                         </SidePart>
@@ -207,7 +207,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("Complex")} 
+                            handleTouch={() => this.changeOffer("ϾOMPLΞX")} 
                         >
                             <Complex />
                         </SidePart>

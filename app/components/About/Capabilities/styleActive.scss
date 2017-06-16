@@ -13,9 +13,9 @@
     .container{
         
         position: fixed;
-        height: 100px;
+        height: 5vw;
         top: 0;
-        width: 30%;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,8 +26,8 @@
 
         .part{
             background: #000;
-            height: 100px;
-            width: 100px;
+            height: 5vw;
+            width: 10.2vw;
             position: absolute;
             display: flex;
             justify-content: center;
@@ -47,8 +47,8 @@
             }
 
             .content{
-                height: 100px;
-                width: 100px;
+                height: 5vw;
+                width: 5vw;
                 background: #000;
                 position: absolute;
                 
@@ -78,7 +78,7 @@
             @extend .part;
 
             width: 0px;
-            height: 100px;
+            height: 5vw;
             -ms-transform: rotate(0deg); /* IE 9 */
             -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
             transform: rotate(0deg);
@@ -87,15 +87,15 @@
         .leftPart{
             @extend .part;
 
-            transform: translateX(-200px) rotate(0);
+            transform: translateX(-14.3vw) rotate(0);
 
             .contentUp{
                 @extend .content;
-                transform: translate3d(-80px, 0, 0);
+                transform: translate3d(-2.6vw, 0, 0);
             }
             .contentDown{
                 @extend .content;
-                transform: translate3d(0, 0, 0);
+                transform: translate3d(4.1vw, 0, 0);
             }
         }
 
@@ -104,22 +104,22 @@
             @extend .part;
 
             border-width: 2px 2px 0 0;
-            transform: translateX(200px) rotate(0);
+            transform: translateX(14.3vw) rotate(0);
 
             .contentUp{
                 @extend .content;
-                transform: translate3d(0, 0, 0);
+                transform: translate3d(-4.1vw, 0, 0);
             }
             .contentDown{
                 @extend .content;
-                transform: translate3d(80px, 0, 0);
+                transform: translate3d(2.6vw, 0, 0);
             }
         }
 
         .centralPartAnimate{
              @extend .centralPart;
 
-             width: 300px;
+             width: 18.4vw;
              transition: all 1s linear 0ms;
         }
 
@@ -134,7 +134,7 @@
 
         .centralIconBlock{
             
-            height: 100px;
+            height: 5vw;
             width: 300px;
             z-index: 2;
 
@@ -152,7 +152,7 @@
         }
 
         .svgContainer{
-            height: 100px;
+            height: 5vw;
             width: 100%;
             position: relative;
             display: flex;
@@ -182,20 +182,20 @@
 
             position: absolute;
             height: 0;
-            width: 500px;
-            top: 100px;
+            width: 22.5vw;
+            top: 5vw;
 
             text-align: center;
             transition: all 1s linear 0ms;
 
             label{
                 color: #fff;
-                flex-basis: 150px;
+                flex-basis:  7.5vw;
                 font-size: 0;
                 text-transform: uppercase;
             }
             input{
-                width: 150px;
+                width: 8vw;
                 height: 0;
                 border: none;
                 font-size: 1em;
@@ -216,11 +216,11 @@
         .contactFormContainerAnimate{
             @extend .contactFormContainer;
 
-            height: 140px;
+            height: 8.25vw;
 
             input{
-                height: 50px;
-                padding: 5px;
+                height: 2.5vw;
+                padding: 0.2vw;
                 background-color: #fff;
                 color: #000;
                 border: 1px solid ;
@@ -228,15 +228,16 @@
             }
 
             label{
-                margin-bottom: 8px;
-                font-size: 2em;
+                margin-top: 1vw;
+                font-size: 1.2vw;
+                margin-bottom: 1vw;
             }
             
 
             .sendButtonContainer{
                 .svgContainer{
                     svg{
-                        height: 50px!important;
+                        height: 2.5vw!important;
                     }
                 }
             }
