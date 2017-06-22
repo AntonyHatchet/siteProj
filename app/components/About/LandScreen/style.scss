@@ -4,20 +4,19 @@
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     .companyName{
-
         text-align: center;
     }
 
 
     .glitch{
         color:black;
-        font-size:14vmax;
+        font-size: 6.35vw;
         position:relative;
-        margin:0 auto;
+        margin-top: 4.5vw;
         
         @include textGlitch("companyName", 12, black, none, #D84315, #2E7D32, 999999, 16, rect(0,900px,0,0));
     }

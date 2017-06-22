@@ -2,7 +2,7 @@
 
 .capabilities{
 
-    height: 100%;
+    height: 25vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +149,7 @@
         }
 
         .contactFormContainer{
-            display: flex;
+            display: none;
             flex-wrap: wrap;
             align-content: center;
             justify-content: center;
@@ -189,7 +189,7 @@
         }
         .contactFormContainerAnimate{
             @extend .contactFormContainer;
-
+            display: flex;
             transform: translateY(400px);
 
             input{

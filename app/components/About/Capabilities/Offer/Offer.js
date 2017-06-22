@@ -4,11 +4,13 @@ import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 
+import {Tabs, Tab} from 'material-ui/Tabs';
+import {List, ListItem} from 'material-ui/List';
 
 import Arrow from 'material-ui/svg-icons/av/play-arrow';
 import Pages from 'material-ui/svg-icons/social/pages';
 
-import {orangeA700, orange500, blue500} from 'material-ui/styles/colors';
+import {orangeA700, grey900, blue500} from 'material-ui/styles/colors';
 
 import { SectionHeader, SectionSubheader, PlainText } from 'components/Texts';
 
@@ -39,7 +41,7 @@ export default class Offer extends Component {
         this.state = {
             showCase: false,
             animate: false,
-            currentCase: this.props.cases.collection[0],
+            currentCase: this.props.cases[0],
             currentCaseNumber: 0,
             sideMenuOpen: false,
             rotate: 0,
@@ -53,7 +55,8 @@ export default class Offer extends Component {
         if(nextProps.changeContent)
             setTimeout(function () {
                 that.setState({
-                    showCase: false
+                    showCase: false,
+                    currentCase: that.props.cases[0]
                 });
             }, 1200);
     }
@@ -85,19 +88,19 @@ export default class Offer extends Component {
     rotate = (value, nextCaseNumber) => {
         const that = this;
 
-        nextCaseNumber = (nextCaseNumber > this.props.cases.collection.length-1)?
-        0 : (nextCaseNumber < 0)? this.props.cases.collection.length-1 : nextCaseNumber;
+        nextCaseNumber = (nextCaseNumber > this.props.cases.length-1)?
+        0 : (nextCaseNumber < 0)? this.props.cases.length-1 : nextCaseNumber;
 
         this.setState({
             rotate: this.state.rotate + value,
             animateControls: true,
-            currentCaseNumber: nextCaseNumber,
-            currentCase: this.props.cases.collection[nextCaseNumber]
+            currentCaseNumber: nextCaseNumber
         })
 
         setTimeout(function () {
             that.setState({
-                animateControls: false
+                animateControls: false,
+                currentCase: that.props.cases[nextCaseNumber]
             })
         }, 600);
     }
@@ -114,16 +117,19 @@ export default class Offer extends Component {
         } = this.state;
 
         const {
-            offerData,
+            offerTitle,
             changeContent,
             showContent,
             text,
             cases,
-            video
+            video,
+            images,
+            about
         } = this.props;
 
         return(
             <div className={(showContent)? styles.offerContainer : styles.offerContainerHide}>
+                <Grid vertical={false} horizontal={true}/>
                 <div className={(changeContent || animate)? styles.hideContent : styles.showContent }>
                     <div className={styles.backgroundContainer}>
                         {[...Array(10)].map((x, i) =>
@@ -132,10 +138,10 @@ export default class Offer extends Component {
                     </div>
                     <div className={(showCase)? styles.contentContainerHide : styles.contentContainer}>
                         <div className={styles.contentBlock} >
-                            <div className={styles.text} data-text={text}>{text}</div>
+                            <div className={styles.text} data-text={offerTitle}>{offerTitle}</div>
                         </div>
                         <div className={styles.contentBlock} >
-                            <PlainText text={"ⱢØЯΞΛΛ Ị₱§ƱΛΛ - Ξ₮Ø ₮ΞҜ§₮-Я¥ß∆, ϾĦ∆§₮Ø Ị§₱ØⱢŽƱΞΛΛ¥J V ₱ΞϾĦ∆₮Ị Ị VΞß-ƉỊŽ∆JИΞ. ⱢØЯΞΛΛ Ị₱§ƱΛΛ ¥∆VⱢ¥∆Ξ₮§¥∆ §₮∆ИƉ∆Я₮ИØJ Я¥ßØJ ƉⱢ¥∆ ₮ΞҜ§₮ØV И∆ Ɫ∆₮ỊИỊϾΞ § И∆ϾĦ∆Ɫ∆ XVỊ VΞҜ∆. V ₮Ø VЯΞΛΛ¥∆ ИΞҜỊJ ßΞŽ¥ΛΛ¥∆ИИ¥J ₱ΞϾĦ∆₮ИỊҜ §ØŽƉ∆Ɫ ßØⱢ§ĦƱ¥Ʊ ҜØⱢⱢΞҜϾỊ¥Ʊ Я∆ŽΛΛΞЯØV Ị ₣ØЯΛΛ §ĦЯỊ₣₮ØV, Ị§₱ØⱢŽƱ¥∆ ⱢØЯΞΛΛ Ị₱§ƱΛΛ ƉⱢ¥∆ Я∆§₱ΞϾĦ∆₮ҜỊ ØßЯ∆ŽϾØV."}/>
+                            <PlainText className={styles.plText} text={about}/>
                         </div>
                         <div className={styles.contentBlock} >
                             <div className={(animateControls)? styles.animateControls : styles.controls}>
@@ -149,33 +155,43 @@ export default class Offer extends Component {
                             <div className={styles.transformationBlock} style={{transform: 'rotate3d(0,1,0,' + rotate + 'deg)'}}>
                                 <div className={styles.frontSide}>
                                     <div className={styles.caseBlock} >
-                                        <video ref={(video) => { this.v1 = video; }} loop muted autoPlay>
-                                            <source src={video[currentCase.video]} type="video/ogg" />
+                                        <video ref={(video) => { this.v1 = video; }} loop muted autoPlay src={video[currentCase.video]}>
                                         </video>
                                     </div>
                                 </div>
                                 <div className={styles.backSide}>
                                     <div className={styles.caseBlock} >
-                                        <video ref={(video) => { this.v2 = video; }} loop muted autoPlay>
-                                            <source src={video[currentCase.video]} type="video/ogg" />
+                                        <video ref={(video) => { this.v2 = video; }} loop muted autoPlay src={video[currentCase.video]}>
                                         </video>
                                     </div>
                                 </div>
                                 <div className={styles.leftSide}>
                                     <div className={styles.caseBlock} >
-                                        <video ref={(video) => { this.v3 = video; }} loop muted autoPlay>
-                                            <source src={video[currentCase.video]} type="video/ogg" />
+                                        <video ref={(video) => { this.v3 = video; }} loop muted autoPlay src={video[currentCase.video]}>
                                         </video>
                                     </div>
                                 </div>
                                 <div className={styles.rightSide}>
                                     <div className={styles.caseBlock} >
-                                        <video ref={(video) => { this.v4 = video; }} loop muted autoPlay>
-                                            <source src={video[currentCase.video]} type="video/ogg" />
+                                        <video ref={(video) => { this.v4 = video; }} loop muted autoPlay src={video[currentCase.video]}>
                                         </video>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className={styles.contentBlock} style={(animateControls)? {transform: "translateY(22vw)"} : null}>
+                            <div className={styles.text} data-text={currentCase.company}>{currentCase.company}</div>
+                            <div className={styles.listContainer}>
+                                <div className={styles.list}>
+                                    <PlainText text={currentCase.comment} className={styles.plText}/>
+                                </div>
+                                <div className={styles.list}>
+                                    {currentCase.technology.collection.map((tech, i) => (
+                                            <img src={images[tech]} title={tech} key={i}/>
+                                    ))}
+                                </div>
+                            </div>
+                            <FlatButton label="Default" labelStyle={{color:"#fff"}} fullWidth={true} backgroundColor={"#000"} hoverColor={grey900}/>
                         </div>
                     </div>
                     {(showCase)? 
@@ -186,43 +202,6 @@ export default class Offer extends Component {
                         null
                     }
                 </div>
-                {(showCase)? 
-                    <Drawer open={this.state.sideMenuOpen} docked={false} onRequestChange={(sideMenuOpen) => this.setState({sideMenuOpen})}>
-                        {cases.collection.map((x, i) =>
-                            <FlatButton key={i} onTouchTap={() => this.showCase(x)} style={{height:"auto", width: "100%"}}>
-                                <div className={styles.drawerCaseBlock} >
-                                    <video loop muted preload autoPlay>
-                                        <source src={video[x.video]} type="video/mp4" />
-                                    </video>
-                                </div>
-                            </FlatButton>
-                        )}
-                    </Drawer>
-                    :
-                    null
-                }
-                {(showCase)?
-                    <div className={styles.drawerButton}>
-                        <IconButton
-                        style={{
-                            position: "absolute",
-                            left:0,
-                            top:"calc(50vh - 60px)",
-                            width: 120,
-                            height: 120,
-                            padding: 30,
-                        }}
-                        iconStyle={{
-                            width: 60,
-                            height: 60,
-                        }}
-                        onTouchTap={this.handleToggle}>
-                            <Pages />
-                        </IconButton>
-                    </div>
-                    :
-                    null
-                }
             </div>
         )
     }

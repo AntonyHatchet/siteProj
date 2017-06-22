@@ -110,7 +110,7 @@ export default class Capabilities extends Component {
             showContactForm: false,
             shitActivated: false,
             changeContent: false,
-            offer: "shit"
+            offer: this.props.text.games
         };
     }
 
@@ -151,7 +151,7 @@ export default class Capabilities extends Component {
     }
 
     render(){
-        const { text, cases, video } = this.props;
+        const { text, video, images } = this.props;
         const { animate, swapButton, requestCall, toMenu, shitActivated, changeContent, offer } = this.state;
 
         let styles = (shitActivated)? stylesActive : stylesBase;
@@ -169,7 +169,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("G∆MΞS")} 
+                            handleTouch={() => this.changeOffer(text["games"])} 
                         >
                             <Games />
                         </SidePart>
@@ -180,7 +180,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("MOBỊLΞ")} 
+                            handleTouch={() => this.changeOffer(text["mobile"])} 
                         >
                             <Mobile />
                         </SidePart>
@@ -196,7 +196,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("WΞB ∆PP")} 
+                            handleTouch={() => this.changeOffer(text["web"])} 
                         >
                             <WebApp />
                         </SidePart>
@@ -207,7 +207,7 @@ export default class Capabilities extends Component {
                                 iconStyle: inlineStyles.mediumIcon,
                                 buttonStyle: inlineStyles.medium
                             }}
-                            handleTouch={() => this.changeOffer("ϾOMPLΞX")} 
+                            handleTouch={() => this.changeOffer(text["complex"])} 
                         >
                             <Complex />
                         </SidePart>
@@ -262,7 +262,7 @@ export default class Capabilities extends Component {
                             mediumIcon: inlineStyles.mediumIcon
                         }}/>}
                 </div>
-                <Offer showContent={shitActivated} changeContent={changeContent} text={offer} cases={cases} video={video}/>
+                <Offer showContent={shitActivated} changeContent={changeContent} offerTitle={offer.title} about={offer.about} cases={offer.collection} video={video} images={images}/>
             </div>
         )
     }

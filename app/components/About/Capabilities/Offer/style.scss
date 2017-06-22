@@ -10,6 +10,7 @@ $elements: 11;
     position: absolute;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 
     .backgroundBlock{
         position: absolute;
@@ -49,48 +50,83 @@ $elements: 11;
     .contentContainer{
         display: block;
         position: relative;
-        
+        height: 100vh;
+
         z-index: 1;
         
          .contentBlock{
             position: absolute;
-            width: 200px;
             height: 5vw;
-            background-color: black;
             display: flex;
             align-items: center;
-            padding: 1.5vmax;
+            padding: 0;
+            transition: all 1s linear 0ms;
 
             &:nth-child(1){
                 width: 28.6vw;
                 top: 6.55vw;
-                left: 0;   
+                left: -30vw;   
                 justify-content: flex-end;
                 text-align: right;
+
+                animation: page-label 1000ms linear forwards;
             }
             &:nth-child(2){
                 width: 49vw;
                 height: 11.6vw;
                 top: 13.1vw;
-                right: 0; 
+                right: -55vw; 
+                padding-right: 1vw;
+
+                align-items: flex-start;
+
+                animation: page-text 1000ms linear forwards;
+                animation-delay: 1200ms;
+
+                p{
+                    margin-top: 0;
+                }
             }
             &:nth-child(3){
-                width: 28.6vw;
-                height: 24.7vw;
-                top: 19.7vw;
-                left: 10.2vw;
-                padding: 0;
+                width: 49vw;
+                height: 24.5vw;
+                left: -60vw;
+                bottom: 0;
 
                 background: none;
 
                 justify-content: space-around;
                 align-content: flex-start;
                 align-items: flex-start;
-            }
+                flex-wrap: wrap;
 
+                animation: billboard 1000ms linear forwards;
+                animation-delay: 1700ms;
+            }
+            &:nth-child(4){
+                width: 38.8vw;
+                height: 18.4vw;
+                bottom: -22vw;
+                right: 0;
+                padding-bottom: 1vw;
+                padding-right: 1vw;
+                justify-content: center;
+                align-items: flex-start;
+                flex-wrap: wrap;
+
+                transition: all 300ms linear 0ms;
+                animation: case-info 1000ms linear forwards;
+                animation-delay: 1500ms;
+
+                .text{
+                    width: 100%;
+                    font-size: 2vw;
+                    text-align: center;
+                    color: #000;
+                }
+            }
             .caseBlock{
-                width: 23.6vw;
-                height: 19.6vw;
+                height: 95%;
                 display: flex;
                 background-color: #fff;
                 justify-content: center;
@@ -100,6 +136,13 @@ $elements: 11;
                 video{
                     height: 100%;
                 }
+            }
+
+            .plText{
+                font-size: 1.3vw;
+                width: 100%;
+                color: #000;
+                text-align: left;
             }
 
             .controls{
@@ -156,19 +199,19 @@ $elements: 11;
                     align-content: center;
                     align-items: center;
 
-                    -webkit-backface-visibility: visible; /* Chrome, Safari, Opera */
-                    backface-visibility: visible;
+                    -webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+                    backface-visibility: hidden;
                 }
 
                 .backSide{
                     @extend .side;
 
-                    transform: translateZ(-12.76vw) rotateZ(180deg) rotateX(180deg);
+                    transform: translateZ(-24.5vw) rotateZ(180deg) rotateX(180deg);
                 }
                 .frontSide{
                     @extend .side;
 
-                    transform: rotateX(180deg) rotateZ(180deg) rotateY(180deg) translateZ(12.76vw);
+                    transform: rotateX(180deg) rotateZ(180deg) rotateY(180deg) translateZ(24.5vw);
                 }
                 .leftSide{
                     @extend .side;
@@ -181,15 +224,43 @@ $elements: 11;
                     transform: translateX(50%) rotateY(90deg);
                 }
             }
+
+            .listContainer{
+                position: relative;
+                height: 80%;
+                width: 100%;
+
+                display: flex;
+                justify-content: center;
+
+                color: #fff;
+
+                .list{
+                    position: relative;
+                    height: 100%;
+                    width: 50%;
+
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    
+                    p{
+                       font-size: 1vw;
+                       margin: 1vw 0 0;
+                    }
+                    img{
+                        height: 25%;
+                        margin: 1vw;
+                    }
+                }
+            }
         }   
 
         .text{
-            color:black;
-            font-size: 3vw;
-            position:relative;
+            font-size: 5.5vw;
             text-transform: uppercase;
 
-            @include textGlitch("blockName", 90, #fff, none, #D84315, #2E7D32, 999999, 16, rect(0,900px,0,0));
+            @include textGlitch("blockName", 40, #000, none, #D84315, #2E7D32, 999999, 16, rect(0,900px,0,0));
         }
     }
 
@@ -230,5 +301,29 @@ $elements: 11;
             width: 100%;
             height: 100%;
         }
+    }
+}
+
+@keyframes billboard{
+    to{
+        left: 0;
+    }
+}
+
+@keyframes page-label{
+    to{
+        left: 0;
+    }
+}
+
+@keyframes page-text{
+    to{
+        right: 0;
+    }
+}
+
+@keyframes case-info{
+    to{
+        bottom: 0;
     }
 }

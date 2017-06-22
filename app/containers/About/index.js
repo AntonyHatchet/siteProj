@@ -1,41 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-
-import ScrollSection from 'components/ScrollSection';
-import ScrollItem from 'components/ScrollItem';
-
-import Animation from 'components/Animation/Space';
-
-import Team from 'components/About/Team';
 import LandScreen from 'components/About/LandScreen';
-import Capabilities from 'components/About/Capabilities';
-import Reviews from 'components/About/Reviews';
-import ThisSite from 'components/About/ThisSite';
 
-import { getAboutPageText, getWorksPageText } from 'selectors/translate';
+import { getContentText } from 'selectors/translate';
 import { getImages } from 'selectors/images';
 import { getVideo } from 'selectors/video';
 
 import styles from './style.scss';
-
+import Grid from 'components/Grid';
 
 @connect(state => ({
-  text: getAboutPageText(state),
-  cases: getWorksPageText(state),
+  text: getContentText(state),
   images: getImages(state),
   video: getVideo(state)
 }))
 class AboutContainer extends Component {
   static propTypes = {
     text: PropTypes.object.isRequired,
-    cases: PropTypes.object.isRequired,
     images: PropTypes.object.isRequired,
     video: PropTypes.object.isRequired
   };
   static defaultProps = {
-    text: {},    
-    cases: {},
+    text: {},
     images: {},
     video: {}
   };
@@ -77,27 +64,18 @@ class AboutContainer extends Component {
   }
 
   render(){
-    const { text, images, cases, video } = this.props;
+    const { text, images, video } = this.props;
     const { width, height} = this.state;
 
     return(
       <section className={styles.aboutContainer}>
-        <Animation width={width} height={height} />
-        <ScrollSection>
-          <ScrollItem>
-            <LandScreen />
-          </ScrollItem>
-          <ScrollItem>
-            <Capabilities text={text.capabilities} cases={cases} video={video} />
-          </ScrollItem>
-        </ScrollSection>
+        <Grid vertical={true} horizontal={true}/>
+        <LandScreen text={text} video={video} images={images}/>
       </section>
     )
   }
 }
 
-export default AboutContainer;
 
-// <ScrollItem>
-//   <Team text={text.team} images={images}/>
-// </ScrollItem>
+//<Animation width={width} height={height} />
+export default AboutContainer;
