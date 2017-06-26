@@ -21,5 +21,12 @@
         @include textGlitch("companyName", 12, black, none, #D84315, #2E7D32, 999999, 16, rect(0,900px,0,0));
     }
 
+    .glitchAnimated{
+        @extend .glitch;
+
+        font-size: 3.95vw;
+        margin-top: 7.9vw;
+    }
+
 }
 

@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+
+import { actions } from 'modules/visitor';
 
 import IconButton from 'material-ui/IconButton';
 
@@ -99,6 +102,12 @@ const inlineStylesActivated = {
     }
 }
 
+@connect(state => (
+        {
+            saveUser: actions.saveUser
+        }
+    )
+)
 export default class Capabilities extends Component {
     
     constructor(props) {
@@ -118,6 +127,7 @@ export default class Capabilities extends Component {
         var that = this;
 
         this.setState({animate: !this.state.animate});
+        this.props.saveUser({animate: !this.state.animate});
 
         setTimeout(function () {
             that.setState({swapButton: !that.state.swapButton})
